@@ -23,11 +23,11 @@ export const addCartItem = async (req: Request, res: Response) => {
 
 export const getAllItemsForACart = async (req: Request, res: Response) => {
   try {
-    const cart_id  = req.query.cart_id
+    const cart_id = req.query.cart_id
     if (typeof cart_id !== 'string') {
       return res.status(400).json({ error: 'Cart ID invalid or not present' });
     }
-    const cartItems = await CartItem.findAll({where: {cart_id: cart_id}})
+    const cartItems = await CartItem.findAll({ where: { cart_id: cart_id } })
     res.status(200).json(cartItems)
   } catch (error) {
     res.status(500).json({ error: error })
