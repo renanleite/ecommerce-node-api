@@ -1,8 +1,27 @@
-import { DataTypes } from 'sequelize'
-import { sequelize } from '../database/connection'
+import { DataTypes, Model, Optional } from 'sequelize';
+import { sequelize } from '../database/connection';
 
-const User = sequelize.define(
-  'User',
+interface UserAttributes {
+  user_id?: number;
+  username: string;
+  email: string;
+  password: string;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+interface UserCreationAttributes extends Optional<UserAttributes, 'user_id' | 'created_at' | 'updated_at'> {}
+
+class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
+  public user_id!: number;
+  public username!: string;
+  public email!: string;
+  public password!: string;
+  public created_at!: Date;
+  public updated_at!: Date;
+}
+
+User.init(
   {
     user_id: {
       type: DataTypes.INTEGER,
@@ -33,9 +52,10 @@ const User = sequelize.define(
     },
   },
   {
+    sequelize,
     tableName: 'users',
     timestamps: false,
   }
-)
+);
 
-export default User
+export default User;

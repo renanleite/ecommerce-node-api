@@ -1,8 +1,23 @@
-import { DataTypes } from 'sequelize'
-import { sequelize } from '../database/connection'
+import { DataTypes, Model, Optional } from 'sequelize';
+import { sequelize } from '../database/connection';
 
-const Cart = sequelize.define(
-  'Cart',
+interface CartAttributes {
+  cart_id?: number;
+  user_id: number;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+interface CartCreationAttributes extends Optional<CartAttributes, 'cart_id' | 'created_at' | 'updated_at'> {}
+
+class Cart extends Model<CartAttributes, CartCreationAttributes> implements CartAttributes {
+  public cart_id!: number;
+  public user_id!: number;
+  public created_at!: Date;
+  public updated_at!: Date;
+}
+
+Cart.init(
   {
     cart_id: {
       type: DataTypes.INTEGER,
@@ -24,9 +39,10 @@ const Cart = sequelize.define(
     },
   },
   {
+    sequelize,
     tableName: 'carts',
     timestamps: false,
   }
-)
+);
 
-export default Cart
+export default Cart;
