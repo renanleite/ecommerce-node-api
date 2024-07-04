@@ -4,7 +4,7 @@ import User from '../models/UserModel'
 
 export const createCart = async (req: Request, res: Response) => {
   try {
-    const user_id  = req.query.user_id as string
+    const { user_id } = req.body
     if (!user_id) {
       return res.status(400).json({ error: 'User ID is required' });
     }
@@ -40,22 +40,6 @@ export const getCartById = async (req: Request, res: Response) => {
     res.status(500).json({ error: error })
   }
 }
-
-// export const updateCart = async (req: Request, res: Response) => {
-//   try {
-//     const { cart_id } = req.params
-//     const { user_id } = req.body
-//     const cart = await Cart.findByPk(cart_id)
-//     if (!cart) {
-//       return res.status(404).json({ error: 'Cart not found' })
-//     }
-//     cart.user_id = user_id
-//     await cart.save()
-//     res.status(200).json(cart)
-//   } catch (error) {
-//     res.status(500).json({ error: error })
-//   }
-// }
 
 export const deleteCart = async (req: Request, res: Response) => {
   try {

@@ -33,23 +33,23 @@ export const getUserById = async (req: Request, res: Response) => {
   }
 }
 
-// export const updateUser = async (req: Request, res: Response) => {
-//   try {
-//     const { user_id } = req.params
-//     const { username, email, password } = req.body
-//     const user = await User.findByPk(user_id)
-//     if (!user) {
-//       return res.status(404).json({ error: 'User not found' })
-//     }
-//     user.username = username
-//     user.email = email
-//     user.password = password
-//     await user.save()
-//     res.status(200).json(user)
-//   } catch (error) {
-//     res.status(500).json({ error: error })
-//   }
-// }
+export const updateUser = async (req: Request, res: Response) => {
+  try {
+    const { user_id } = req.params
+    const { username, email, password } = req.body
+    const user = await User.findByPk(user_id)
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' })
+    }
+    user.username = username
+    user.email = email
+    user.password = password
+    await user.save()
+    res.status(200).json(user)
+  } catch (error) {
+    res.status(500).json({ error: error })
+  }
+}
 
 export const deleteUser = async (req: Request, res: Response) => {
   try {
