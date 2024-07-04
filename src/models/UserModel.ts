@@ -1,5 +1,5 @@
-import { DataTypes } from 'sequelize';
-import { sequelize } from '../database/connection';
+import { DataTypes } from 'sequelize'
+import { sequelize } from '../database/connection'
 
 const User = sequelize.define(
   'User',
@@ -36,6 +36,6 @@ const User = sequelize.define(
     tableName: 'users',
     timestamps: false,
   }
-);
+)
 
-export default User;
+export default User

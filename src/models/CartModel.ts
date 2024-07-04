@@ -1,5 +1,5 @@
-import { DataTypes } from 'sequelize';
-import { sequelize } from '../database/connection';
+import { DataTypes } from 'sequelize'
+import { sequelize } from '../database/connection'
 
 const Cart = sequelize.define(
   'Cart',
@@ -27,6 +27,6 @@ const Cart = sequelize.define(
     tableName: 'carts',
     timestamps: false,
   }
-);
+)
 
-export default Cart;
+export default Cart
