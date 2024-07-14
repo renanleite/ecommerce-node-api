@@ -1,24 +1,24 @@
-import { DataTypes, Model, Optional } from 'sequelize';
-import { sequelize } from '../database/connection';
+import { DataTypes, Model, Optional } from 'sequelize'
+import { sequelize } from '../database/connection'
 
 interface UserAttributes {
-  user_id?: number;
-  username: string;
-  email: string;
-  password: string;
-  created_at?: Date;
-  updated_at?: Date;
+  user_id?: number
+  username: string
+  email: string
+  password: string
+  created_at?: Date
+  updated_at?: Date
 }
 
 interface UserCreationAttributes extends Optional<UserAttributes, 'user_id' | 'created_at' | 'updated_at'> {}
 
 class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
-  public user_id!: number;
-  public username!: string;
-  public email!: string;
-  public password!: string;
-  public created_at!: Date;
-  public updated_at!: Date;
+  public user_id!: number
+  public username!: string
+  public email!: string
+  public password!: string
+  public created_at!: Date
+  public updated_at!: Date
 }
 
 User.init(
@@ -56,6 +56,6 @@ User.init(
     tableName: 'users',
     timestamps: false,
   }
-);
+)
 
-export default User;
+export default User

@@ -3,10 +3,10 @@ import { addCartItem, getAllItemsForACart, getCartItemById, updateCartItem, dele
 
 const router = Router()
 
-router.post('/cart-items', addCartItem)
-router.get('/cart-items', getAllItemsForACart)
-router.get('/cart-items/:cart_item_id', getCartItemById)
-router.put('/cart-items/:cart_item_id', updateCartItem)
-router.delete('/cart-items/:cart_item_id', deleteCartItem)
+router.post('/register', addCartItem)
+router.get('/all', getAllItemsForACart)
+router.get('/:cart_item_id', getCartItemById)
+router.put('/:cart_item_id', updateCartItem)
+router.delete('/:cart_item_id', deleteCartItem)
 
 export default router

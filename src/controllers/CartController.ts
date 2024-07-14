@@ -6,7 +6,7 @@ export const createCart = async (req: Request, res: Response) => {
   try {
     const { user_id } = req.body
     if (!user_id) {
-      return res.status(400).json({ error: 'User ID is required' });
+      return res.status(400).json({ error: 'User ID is required' })
     }
     const user = await User.findByPk(user_id)
     if (!user) {
