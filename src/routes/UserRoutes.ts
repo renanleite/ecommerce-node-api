@@ -1,7 +1,12 @@
 import { Router } from 'express'
-import { createUser, getAllUsers, getUserById, deleteUser, updateUser } from '../controllers/UserController'
+import {
+    createUser,
+    getAllUsers,
+    getUserById,
+    deleteUser,
+    updateUser,
+} from '../controllers/UserController'
 import { protect } from '../controllers/AuthController'
-
 
 const router = Router()
 

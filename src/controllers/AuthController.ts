@@ -15,14 +15,16 @@ if (!SECRET) {
 export const login = async (req: Request, res: Response) => {
     const { email, password } = req.body
 
-    if(!email || !password) {
-        res.json({ error: 'Credentials missing'})
+    if (!email || !password) {
+        res.json({ error: 'Credentials missing' })
     }
 
     const user = await User.findOne({ where: { email } })
 
     if (user && (await bcrypt.compare(password, user.password))) {
-        const token = jwt.sign({ userId: user.user_id }, SECRET, { expiresIn: '1h' })
+        const token = jwt.sign({ userId: user.user_id }, SECRET, {
+            expiresIn: '1h',
+        })
         res.json({ token })
     } else {
         res.status(401).json({ error: 'Invalid credentials' })
